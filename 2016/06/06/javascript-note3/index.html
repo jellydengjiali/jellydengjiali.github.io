@@ -92,7 +92,7 @@
 鼠标事件：click、dblclick、mousedown、mouseout、mouseover、mousemove
 键盘事件：keydown、keypress、keyup
 HTML事件
-其他事件：xmlhttprequest">
+其他事件：xmlhttprequest关于事件绑定1、直接和某个htm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javascript 学习笔记（三）">
 <meta property="og:url" content="http://yoursite.com/2016/06/06/javascript-note3/index.html">
@@ -105,9 +105,8 @@ HTML事件
 鼠标事件：click、dblclick、mousedown、mouseout、mouseover、mousemove
 键盘事件：keydown、keypress、keyup
 HTML事件
-其他事件：xmlhttprequest">
-<meta property="og:image" content="http://i.imgur.com/r0E8mI9.png">
-<meta property="og:updated_time" content="2016-09-27T09:57:26.641Z">
+其他事件：xmlhttprequest关于事件绑定1、直接和某个htm">
+<meta property="og:updated_time" content="2016-09-27T14:26:15.082Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript 学习笔记（三）">
 <meta name="twitter:description" content="第三阶段js事件驱动机制
@@ -118,8 +117,7 @@ HTML事件
 鼠标事件：click、dblclick、mousedown、mouseout、mouseover、mousemove
 键盘事件：keydown、keypress、keyup
 HTML事件
-其他事件：xmlhttprequest">
-<meta name="twitter:image" content="http://i.imgur.com/r0E8mI9.png">
+其他事件：xmlhttprequest关于事件绑定1、直接和某个htm">
 
 
 
@@ -312,24 +310,39 @@ HTML事件
 <li>鼠标事件：click、dblclick、mousedown、mouseout、mouseover、mousemove</li>
 <li>键盘事件：keydown、keypress、keyup</li>
 <li>HTML事件</li>
-<li>其他事件：xmlhttprequest<a id="more"></a>
-<h3 id="js引用外部css文件"><a href="#js引用外部css文件" class="headerlink" title="js引用外部css文件"></a>js引用外部css文件</h3></li>
+<li>其他事件：xmlhttprequest<h4 id="关于事件绑定"><a href="#关于事件绑定" class="headerlink" title="关于事件绑定"></a>关于事件绑定</h4>1、直接和某个html控件绑定 比如:<br><code>&lt;input type=&quot;button&quot; value=&quot;刷新页面&quot; onclick=&quot;test()&quot;/&gt;</code><br>2、通过getElementById()获取到元素后，再绑定监听<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;script language=&quot;javascript&quot;&gt;</div><div class="line">    document.getElementById(&quot;but1&quot;).onclik=test;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<p><img src="http://i.imgur.com/r0E8mI9.png" alt=""></p>
+<a id="more"></a>
+<p>3、detachEvent与attachEvent，如果我们有一个投票系统，但是只能投一次票，解除绑定机制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;script language=&quot;javascript&quot;&gt;</div><div class="line">    document.getElementById(&quot;but1&quot;).attachEvent(&quot;onclick&quot;,test);</div><div class="line">    function test()&#123;</div><div class="line">    window.alert(&apos;you have one vote&apos;);</div><div class="line">    document.getElementById(&quot;but1&quot;).detachEvent(&quot;onclick&quot;,test);</div><div class="line">    &#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;ibnput type=&quot;button&quot; id=&quot;but1&quot; value=&quot;vote&quot;/&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure></p>
 <h2 id="DOM编程"><a href="#DOM编程" class="headerlink" title="DOM编程"></a>DOM编程</h2><p>1、dom编程，写出各种网页游戏<br>2、dom编程也是ajax的重要基础<br>3、将html文档看成一颗dom树<br>4、dom html 对象只 通过方法对元素进行动态的控制</p>
-<h3 id="bom"><a href="#bom" class="headerlink" title="bom"></a>bom</h3><ul>
+<h2 id="Bom"><a href="#Bom" class="headerlink" title="Bom"></a>Bom</h2><ul>
 <li>bom(browser object model),浏览器对象模型</li>
 </ul>
-<h3 id="window对象"><a href="#window对象" class="headerlink" title="window对象"></a>window对象</h3><p>1、confirm<br><figure class="highlight plain"><figcaption><span>test()&#123;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var res=window.confirm(&quot;你要删除吗？&quot;);</div><div class="line">if(res)&#123;</div><div class="line">window.alert(&quot;删除&quot;);</div><div class="line">&#125;else&#123;</div><div class="line">window.alert(&quot;放弃删除&quot;);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="window对象"><a href="#window对象" class="headerlink" title="window对象"></a>window对象</h3><p>1、confirm<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function test()&#123;</div><div class="line">var res=window.confirm(&quot;你要删除吗？&quot;);</div><div class="line">if(res)&#123;</div><div class="line">window.alert(&quot;删除&quot;);</div><div class="line">&#125;else&#123;</div><div class="line">window.alert(&quot;放弃删除&quot;);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>2、setInterval（）</p>
 <ul>
 <li>该函数可以根据指定的时间，循环的执行某个函数，或者表达式需求，请每隔1s弹出</li>
-<li>小人走10步就停止<br>3、clearInrerval（），调用setInterval的返回值<br>4、setTimeout（）<br>在指定的毫秒数后调用函数或计算表达式但是只能调用一次。<br>5、clearTinmeout（）<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function test()&#123;</div><div class="line">window.alert(&quot;hello&quot;);</div><div class="line">&#125;</div><div class="line">var mytimer=setTimeout(&quot;test()&quot;,3000);</div><div class="line">clearTimeout(mytimer);</div></pre></td></tr></table></figure>
-</li>
+<li>小人走10步就停止</li>
 </ul>
+<p>3、clearInrerval（），调用setInterval的返回值<br>4、setTimeout（）<br>在指定的毫秒数后调用函数或计算表达式但是只能调用一次。<br>5、clearTinmeout（）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function test()&#123;</div><div class="line">window.alert(&quot;hello&quot;);</div><div class="line">&#125;</div><div class="line">var mytimer=setTimeout(&quot;test()&quot;,3000);</div><div class="line">clearTimeout(mytimer);</div></pre></td></tr></table></figure></p>
 <p>6、moveTo() moveBy()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">window.moveTo(100,100)//这个是当前相对屏幕的左上角</div><div class="line">window.moveBy(100,100)//当前这个窗口的左上角</div></pre></td></tr></table></figure></p>
 <p>7、resizeTo() resizeBy()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">resizeTo(100,100)//把窗口调整到100,100</div><div class="line">resizeBy(100,100)//把窗口再增加100，100</div></pre></td></tr></table></figure></p>
 <p>8、open() close()<br>9、opener()<br>父窗口和子窗口通信<br>10、window的status可以去控制状态栏信息。</p>
+<h3 id="Screen-对象"><a href="#Screen-对象" class="headerlink" title="Screen 对象"></a>Screen 对象</h3><ul>
+<li>Screen 对象包含有关客户端显示屏幕的信息。</li>
+</ul>
+<h3 id="history对象"><a href="#history对象" class="headerlink" title="history对象"></a>history对象</h3><ul>
+<li>由js runtime engine自动创建，所以也可以认为history就是一个js对象</li>
+<li>history.back()  ~ history.goback(-1)</li>
+<li><p>属性： history.length 返回浏览器历史列表中的 URL 数量</p>
+<h3 id="Location-对象"><a href="#Location-对象" class="headerlink" title="Location 对象"></a>Location 对象</h3></li>
+<li><p>Location 对象包含有关当前 URL 的信息</p>
+</li>
+<li>Location 对象是 Window 对象的一个部分，可通过window.location 属性来访问。</li>
+<li>reload() 重新加载改文档<h3 id="Navigator对象"><a href="#Navigator对象" class="headerlink" title="Navigator对象"></a>Navigator对象</h3></li>
+<li>包含有关浏览器的信息</li>
+</ul>
 
       
     </div>
@@ -481,7 +494,7 @@ HTML事件
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第三阶段"><span class="nav-number">1.</span> <span class="nav-text">第三阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#js事件驱动机制"><span class="nav-number">1.1.</span> <span class="nav-text">js事件驱动机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件的分类"><span class="nav-number">1.1.1.</span> <span class="nav-text">事件的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js引用外部css文件"><span class="nav-number">1.1.2.</span> <span class="nav-text">js引用外部css文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM编程"><span class="nav-number">1.2.</span> <span class="nav-text">DOM编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bom"><span class="nav-number">1.2.1.</span> <span class="nav-text">bom</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#window对象"><span class="nav-number">1.2.2.</span> <span class="nav-text">window对象</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第三阶段"><span class="nav-number">1.</span> <span class="nav-text">第三阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#js事件驱动机制"><span class="nav-number">1.1.</span> <span class="nav-text">js事件驱动机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件的分类"><span class="nav-number">1.1.1.</span> <span class="nav-text">事件的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关于事件绑定"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">关于事件绑定</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM编程"><span class="nav-number">1.2.</span> <span class="nav-text">DOM编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bom"><span class="nav-number">1.3.</span> <span class="nav-text">Bom</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#window对象"><span class="nav-number">1.3.1.</span> <span class="nav-text">window对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Screen-对象"><span class="nav-number">1.3.2.</span> <span class="nav-text">Screen 对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#history对象"><span class="nav-number">1.3.3.</span> <span class="nav-text">history对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Location-对象"><span class="nav-number">1.3.4.</span> <span class="nav-text">Location 对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Navigator对象"><span class="nav-number">1.3.5.</span> <span class="nav-text">Navigator对象</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
