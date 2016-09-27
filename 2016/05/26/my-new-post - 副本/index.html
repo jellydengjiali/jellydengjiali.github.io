@@ -1,0 +1,875 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="基本介绍
+脚本语言 是用于web开发的脚本语言（1、往往不能独立使用，和html/jsp/php/asp/asp.net 配合使用、有自己的变量、函数、控制语句，顺序、分支、循环）
+
+（脚本语言）就是解释性语言，即在执行时候，直接对源码进行执行
+
+java程序 .java-.class-jvm js-浏览器（js引擎来解释执行）
+js在客户端执行，被浏览器执行。
+因为js是由浏览器来执行的，因此这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript学习笔记（一）">
+<meta property="og:url" content="http://yoursite.com/2016/05/26/my-new-post - 副本/index.html">
+<meta property="og:site_name" content="Jelly's Blog">
+<meta property="og:description" content="基本介绍
+脚本语言 是用于web开发的脚本语言（1、往往不能独立使用，和html/jsp/php/asp/asp.net 配合使用、有自己的变量、函数、控制语句，顺序、分支、循环）
+
+（脚本语言）就是解释性语言，即在执行时候，直接对源码进行执行
+
+java程序 .java-.class-jvm js-浏览器（js引擎来解释执行）
+js在客户端执行，被浏览器执行。
+因为js是由浏览器来执行的，因此这">
+<meta property="og:updated_time" content="2016-05-31T07:12:39.645Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript学习笔记（一）">
+<meta name="twitter:description" content="基本介绍
+脚本语言 是用于web开发的脚本语言（1、往往不能独立使用，和html/jsp/php/asp/asp.net 配合使用、有自己的变量、函数、控制语句，顺序、分支、循环）
+
+（脚本语言）就是解释性语言，即在执行时候，直接对源码进行执行
+
+java程序 .java-.class-jvm js-浏览器（js引擎来解释执行）
+js在客户端执行，被浏览器执行。
+因为js是由浏览器来执行的，因此这">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> JavaScript学习笔记（一） | Jelly's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jelly's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaScript学习笔记（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-26T22:17:57+08:00" content="2016-05-26">
+              2016-05-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/26/my-new-post - 副本/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/26/my-new-post - 副本/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h4><ul>
+<li><p>脚本语言 是用于web开发的脚本语言（1、往往不能独立使用，和html/jsp/php/asp/asp.net 配合使用、有自己的变量、函数、控制语句，顺序、分支<br>、循环）</p>
+</li>
+<li><p>（脚本语言）就是解释性语言，即在执行时候，直接对源码进行执行</p>
+</li>
+<li>java程序 .java-.class-jvm js-浏览器（js引擎来解释执行）</li>
+<li>js在客户端执行，被浏览器执行。</li>
+<li>因为js是由浏览器来执行的，因此这不同类型的浏览器可能对js的支持不一样。</li>
+<li>js代码位置可以随意</li>
+<li>js必须用<br>   <code>&lt;script language=&quot;javascript&quot;&gt;
+   &lt;/script&gt;</code> 如果木有包起来，浏览器会将其视为普通文本。</li>
+<li>在一个html文件中可以出现多对<code>&lt;script&gt;</code>片段，浏览器会按照先后顺序依次执行。</li>
+<li>js的变量的类型怎么决定，js是弱数据类型语言即，在定义变量的时候，统一使用var表示，甚至可以去掉var这个关键字</li>
+<li>js中的变量的数据类型是由js引擎决定的。</li>
+<li>标识符不能以数字开头</li>
+<li>严格区分大小写（标记语言不区分）</li>
+</ul>
+<a id="more"></a>
+<h4 id="js的命名规范"><a href="#js的命名规范" class="headerlink" title="js的命名规范"></a>js的命名规范</h4><ul>
+<li>使用大小写字母、数字,_,$可以命名</li>
+<li>不能以数字开头</li>
+<li>不能使用js的关键字/保留字</li>
+<li>区分大小写</li>
+<li>单行注释// 多行注释 /**/</li>
+</ul>
+<h5 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h5><ul>
+<li><code>window.prompt</code>请输入值对话框</li>
+<li><code>document.writeln()</code>显示</li>
+<li><code>parseFloat()</code> 转换成数字</li>
+<li><code>a++ 先判断再++</code></li>
+<li><code>++a 先++再判断</code></li>
+<li>逻辑运算中，0 、””、 flase、 null、 undefined、 NaN均表示flase</li>
+<li>js中非0的数都为真</li>
+<li><code>||</code>返回第一个不为flase那个值（对象亦可），或者是返回最后一个值（如果全部是flase的话）；</li>
+</ul>
+<h5 id="控制语句"><a href="#控制语句" class="headerlink" title="控制语句"></a>控制语句</h5><blockquote>
+<p>顺序控制</p>
+</blockquote>
+<ul>
+<li>对于编程而言，不控制其流程就是顺序执行。</li>
+</ul>
+<blockquote>
+<p>分支控制</p>
+</blockquote>
+<ul>
+<li><p>单分支</p>
+<pre><code>if（条件表达式）{
+//执行语句；
+}
+</code></pre></li>
+<li><p>双分支</p>
+<pre><code>if（条件表达式）{
+}else{}
+</code></pre></li>
+<li><p>多分支</p>
+<pre><code>if（条件表示式1）{
+//执行
+}else if(条件表示式2){
+//执行
+}else if(可以有多个else if){
+}
+else{//可以没有
+}
+</code></pre></li>
+<li><p>switch</p>
+<pre><code>switch(表达式){
+case 常量1：
+//执行语句；
+break；//作用是跳出整个switch
+
+case 常量2：
+//执行语句；
+break；
+
+……
+default：
+//执行
+}
+</code></pre></li>
+</ul>
+<ul>
+<li>数据类型可以是js支持的任何类型，数组和对象除外</li>
+<li>case后面的数据类型也可以任意，数组和对象除外</li>
+<li>break的作用是跳出整个switch</li>
+<li>如果没有匹配的则执行default</li>
+</ul>
+<blockquote>
+<p>循环控制</p>
+</blockquote>
+<ul>
+<li><p>for循环基本结构</p>
+<pre><code>for(循环初值；循环条件；步长){
+语句；//循环体
+}
+</code></pre></li>
+<li><p>while循环</p>
+<pre><code>for(条件表达式){
+//执行语句；
+}
+</code></pre></li>
+<li><p>do while</p>
+<pre><code>do{
+语句；//循环体
+}while(循环条件)；
+</code></pre></li>
+</ul>
+<h4 id="js函数"><a href="#js函数" class="headerlink" title="js函数"></a>js函数</h4><ul>
+<li>函数的基本概念：为完成某一功能的代码（语句，指令）的集合</li>
+<li><p>基本语法</p>
+<pre><code>function 函数名（参数列表）{
+        //代码
+     renturn 值；//可以选择
+}
+</code></pre></li>
+<li><p>函数调用的方式：普通调用 【函数名（实际参数…）】、通过指向函数的变量去调用【var myvar=函数名；myvar（实际参数）】</p>
+</li>
+<li>引入js文件<code>&lt;script language=&quot;javascript&quot; src=&quot;myfunction.js&quot;&gt;&lt;/script&gt;</code></li>
+<li><p>关于接收函数返回值的问题</p>
+<pre><code>var myvar=test（‘abc’）；//如果test函数没有返回值，但是你又接收了，则返回的就是undefined；如果有返回值，则返回其值
+window.alert(myvar);
+</code></pre></li>
+<li><p>js的函数天然支持可变参数</p>
+</li>
+<li>js中 arguments，可以访问所有传入值<code>window.alert（argument.length）；</code></li>
+</ul>
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><ul>
+<li>基本用法：var 数组名=[元素值，元素值，…..]</li>
+<li>元素的值可以是任意类型</li>
+<li>var arr=[4,56,”hello world”,true];</li>
+<li>js的数组是动态增长的</li>
+<li>对字符串分割，生成一个字符串数组 split函数可以参考文档</li>
+</ul>
+<h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><h4 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h4><h4 id="js面向（基于）对象编程"><a href="#js面向（基于）对象编程" class="headerlink" title="js面向（基于）对象编程"></a>js面向（基于）对象编程</h4><ul>
+<li>js中没有类class，但是它取了新的名字叫原型对象，因此类等同于原型对象</li>
+<li>js中的对象属性可以动态的添加</li>
+<li><p>属性没有限制</p>
+<pre><code>function Cat（）{
+}
+//Cat();函数
+var cat1=new.Cat();//类
+cat1.name=&quot;xiaobai&quot;;
+cat1.age=&quot;3&quot;;
+cat1.color=&quot;write&quot;;
+</code></pre></li>
+</ul>
+<blockquote>
+<p>类（原型对象）和对象的区别和联系</p>
+</blockquote>
+<ul>
+<li>类是抽象的，概念代表一类事物</li>
+<li>对象是具体的，代表一个实体</li>
+<li>对象是以类（原型对象）为模板创建的</li>
+</ul>
+<blockquote>
+<p>创建对象的方式有五种</p>
+</blockquote>
+<ul>
+<li>工厂方法一使用new object创建对象并添加相关属性</li>
+<li>使用构造函数来定义类（原型对象）</li>
+<li>使用prototype</li>
+<li>构造函数及原型混合方式</li>
+<li>动态原型方式</li>
+</ul>
+<h4 id="使用构造函数来定义类（原型对象）"><a href="#使用构造函数来定义类（原型对象）" class="headerlink" title="使用构造函数来定义类（原型对象）"></a>使用构造函数来定义类（原型对象）</h4><pre><code>基本语法
+function 类名/原型对象名（）{
+}
+</code></pre><h4 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h4><p>var 对象名=new 类名</p>
+<blockquote>
+<p>js中一切都是对象</p>
+</blockquote>
+<p>var的作用</p>
+<pre><code>var abc=89;
+function test(){
+//在函数里，如果你不带var，则表示使用全局的abc变量
+//如果你带上var则表示在test（）中，定义一个新的abc变量。
+abc=900;
+}
+test();
+window.alert(abc);
+</code></pre><blockquote>
+<p>访问对象的属性的方法有两种：</p>
+</blockquote>
+<ul>
+<li><p>普通方式：对象名.属性名</p>
+</li>
+<li><p>动态访问：对象名[“属性名”]</p>
+<pre><code>function person(){};
+var p1=new person();
+p1.name=&quot;顺平&quot;；
+window.alert(p1.name);//顺平
+var val=&quot;na&quot;+&quot;me&quot;;
+window.alert(p1[val]);//顺平
+</code></pre></li>
+<li><p>delete删除对象的属性：delete 对象名.属性名//立即释放对象的属性空间</p>
+</li>
+</ul>
+<blockquote>
+<p>this </p>
+</blockquote>
+<ul>
+<li>this只能在类定义的内部使用，不能再外部使用</li>
+<li><blockquote>
+<p>对象-成员函数（方法）</p>
+</blockquote>
+</li>
+<li><p>比如：我们希望对象不但有属性，还希望他有行为（行为在程序中要靠函数实现）</p>
+</li>
+<li>给对象添加方法有两种方法：</li>
+</ul>
+<p>1、</p>
+<pre><code>function 类名（）{
+ this.属性；
+}
+
+var 对象名=new 类名（）；
+function 函数名（）{
+//执行
+}
+对象名.属性名=函数名；
+//这样就相当于把函数赋给 对象名.属性名，此时这个属性名就表示一个函数。
+对象名.属性名（）；
+</code></pre><p>2、 </p>
+<pre><code>对象名.属性名=function（参数列表）{
+//代码
+}；
+ 调用
+ 对象名.属性名（实际参数）；
+</code></pre><p>3、</p>
+<p>前面的方法有一个问题：就是每个对象独占函数代码。这样若对象很多，则会影响效率，js设计者，给我们提供另一个方法 原型法：多个对象可以共享函数代码<br>        function Dog（）{</p>
+<pre><code>}
+var dog1=new Dog();
+//使用prototype类去绑定一个函数给shout
+Dog.prototype.shout=function(){
+window.alert(&quot;小狗&quot;);
+}
+dog1.shout();
+var dog2=new Dog();
+dog2.shout();
+</code></pre><p>4、==号的作用</p>
+<ul>
+<li>当==的两边都是字符串的时候，则比较内容相等否</li>
+<li>如==两边都是数字，则数的大小是否相等</li>
+<li>如==是对象或者是对象函数，则比较地址是否相等</li>
+</ul>
+<h4 id="对象-object类"><a href="#对象-object类" class="headerlink" title="对象 object类"></a>对象 object类</h4><blockquote>
+<p>成员函数的细节</p>
+</blockquote>
+<ul>
+<li><p>成员函数的参数可以是多个<code>function 函数名（参数1.。。）{}</code></p>
+</li>
+<li><p>成员函数可以有返回值，也可以没有，但是有的话最多只能有一个</p>
+</li>
+<li>js中不支持函数的重载.js在调用一个函数的时候，是根据函数名来调用。如果有多个函数名相同，则人最后一个函数。</li>
+</ul>
+<blockquote>
+<p>构造函数</p>
+</blockquote>
+<ul>
+<li><p>基本用法</p>
+<pre><code> function 类名（参数列表）{
+       属性=参数值；
+}
+</code></pre></li>
+<li><p>如果一个对象比较简单，我们可以直接创建<code>var dog={name:&#39;小狗&#39;,age:8,fun1:function(){window.alert(&#39;hello,world&#39;);}};</code></p>
+</li>
+<li><code>for (var key in History){document.writeln(key+&quot;:&quot;+History[key]+&quot;&lt;/br&gt;&quot;)}</code> 遍历</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/17/my-new-post/" rel="next" title="开始写博客">
+                <i class="fa fa-chevron-left"></i> 开始写博客
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/01/Jquery-note/" rel="prev" title="Jquery note (一）">
+                Jquery note (一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/26/my-new-post - 副本/"
+           data-title="JavaScript学习笔记（一）" data-url="http://yoursite.com/2016/05/26/my-new-post - 副本/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Jelly Deng" />
+          <p class="site-author-name" itemprop="name">Jelly Deng</p>
+          <p class="site-description motion-element" itemprop="description">人生得意须尽欢</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本介绍"><span class="nav-number">1.</span> <span class="nav-text">基本介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#js的命名规范"><span class="nav-number">2.</span> <span class="nav-text">js的命名规范</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本语法"><span class="nav-number">2.1.</span> <span class="nav-text">基本语法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#控制语句"><span class="nav-number">2.2.</span> <span class="nav-text">控制语句</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#js函数"><span class="nav-number">3.</span> <span class="nav-text">js函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数组"><span class="nav-number">4.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#冒泡排序"><span class="nav-number">5.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二分查找"><span class="nav-number">6.</span> <span class="nav-text">二分查找</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#js面向（基于）对象编程"><span class="nav-number">7.</span> <span class="nav-text">js面向（基于）对象编程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用构造函数来定义类（原型对象）"><span class="nav-number">8.</span> <span class="nav-text">使用构造函数来定义类（原型对象）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建对象"><span class="nav-number">9.</span> <span class="nav-text">创建对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象-object类"><span class="nav-number">10.</span> <span class="nav-text">对象 object类</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jelly Deng</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a> 
+</div>
+
+<div class="theme-info">
+  theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jellydeng"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
