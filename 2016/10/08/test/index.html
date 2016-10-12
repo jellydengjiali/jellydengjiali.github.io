@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="angular," />
 
 
 
@@ -84,16 +84,55 @@
 
 
 
-<meta name="description" content="人生得意须尽欢">
+<meta name="description" content="Angular.js标签（空格分隔）： angular 学习笔记
+
+AngularJS应用组成如下：MVC
+view（视图），即HTML。
+Model(模型), 当前视图中可用的数据
+Controller(控制器), 即 JavaScript 函数，可以添加或修改属性
+
+MVVM
+Model—View—View—Model
+数据双向绑定
+
+Angularjs 特点
+模块化
+开发便捷，快速（jq用1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test">
+<meta property="og:title" content="Angular学习笔记">
 <meta property="og:url" content="http://yoursite.com/2016/10/08/test/index.html">
 <meta property="og:site_name" content="Jelly's Blog">
-<meta property="og:description" content="人生得意须尽欢">
-<meta property="og:updated_time" content="2016-10-08T03:06:32.524Z">
+<meta property="og:description" content="Angular.js标签（空格分隔）： angular 学习笔记
+
+AngularJS应用组成如下：MVC
+view（视图），即HTML。
+Model(模型), 当前视图中可用的数据
+Controller(控制器), 即 JavaScript 函数，可以添加或修改属性
+
+MVVM
+Model—View—View—Model
+数据双向绑定
+
+Angularjs 特点
+模块化
+开发便捷，快速（jq用1">
+<meta property="og:updated_time" content="2016-10-12T10:36:14.305Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test">
-<meta name="twitter:description" content="人生得意须尽欢">
+<meta name="twitter:title" content="Angular学习笔记">
+<meta name="twitter:description" content="Angular.js标签（空格分隔）： angular 学习笔记
+
+AngularJS应用组成如下：MVC
+view（视图），即HTML。
+Model(模型), 当前视图中可用的数据
+Controller(控制器), 即 JavaScript 函数，可以添加或修改属性
+
+MVVM
+Model—View—View—Model
+数据双向绑定
+
+Angularjs 特点
+模块化
+开发便捷，快速（jq用1">
 
 
 
@@ -111,7 +150,7 @@
   };
 </script>
 
-  <title> test | Jelly's Blog </title>
+  <title> Angular学习笔记 | Jelly's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -231,7 +270,7 @@
             
             
               
-                test
+                Angular学习笔记
               
             
           </h1>
@@ -278,7 +317,102 @@
       
 
       
-        
+        <h1 id="Angular-js"><a href="#Angular-js" class="headerlink" title="Angular.js"></a>Angular.js</h1><p>标签（空格分隔）： angular 学习笔记</p>
+<hr>
+<h3 id="AngularJS应用组成如下："><a href="#AngularJS应用组成如下：" class="headerlink" title="AngularJS应用组成如下："></a>AngularJS应用组成如下：</h3><h2 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h2><ul>
+<li>view（视图），即HTML。</li>
+<li>Model(模型), 当前视图中可用的数据</li>
+<li>Controller(控制器), 即 JavaScript 函数，可以添加或修改属性</li>
+</ul>
+<h2 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h2><ul>
+<li>Model—View—View—Model</li>
+<li>数据双向绑定</li>
+</ul>
+<h3 id="Angularjs-特点"><a href="#Angularjs-特点" class="headerlink" title="Angularjs 特点"></a>Angularjs 特点</h3><ul>
+<li>模块化</li>
+<li>开发便捷，快速（jq用1000行 现在只需100行）</li>
+<li>代码结构清晰，逻辑只需要关注数据变化</li>
+<li>适合构建大型单页面应用</li>
+</ul>
+<h3 id="controller-方法"><a href="#controller-方法" class="headerlink" title="controller 方法"></a>controller 方法</h3><a id="more"></a>
+<h4 id="页面的控制器"><a href="#页面的控制器" class="headerlink" title="页面的控制器"></a>页面的控制器</h4><ul>
+<li>对应dom的控制方法</li>
+<li>controller主要控制模型变量</li>
+<li>指定了dom的对应的作用域</li>
+<li>指定 controller：Ng-controller</li>
+</ul>
+<h3 id="scope"><a href="#scope" class="headerlink" title="scope"></a>scope</h3><p>scope 是模型。<br>scope 是一个 JavaScript对象，带有属性和方法，这些属性和方法可以在视图和控制器中使用。</p>
+<ul>
+<li>带$都是Angular自己提供的依赖注入服务（service）</li>
+<li>服务提供相应的方法</li>
+<li>$scope对应隔离的数据模型，对应DOM</li>
+<li>$scope变量的改变对应DOM改变</li>
+</ul>
+<h3 id="Ng-repeat"><a href="#Ng-repeat" class="headerlink" title="Ng-repeat"></a>Ng-repeat</h3><ul>
+<li>angular 提供的指令</li>
+<li>dom元素上的一个标记</li>
+<li>告诉angular怎么将行为和元素绑定</li>
+<li>或者变换元素和它的子元素</li>
+<li>封装的一系统功能</li>
+<li>循环遍历对象</li>
+<li>数组的时候：Ng-repeat=”item in object”、$index</li>
+<li>对象的时候：Ng-repeat=”(name,value)in object”</li>
+</ul>
+<h3 id="Ng-click"><a href="#Ng-click" class="headerlink" title="Ng-click"></a>Ng-click</h3><ul>
+<li>再点击的时候激活元素</li>
+<li>Ng-click监听激活对象</li>
+<li>Ng-class添加激活类</li>
+<li>Ng-click=””</li>
+<li>$event为事件对象</li>
+</ul>
+<h3 id="Ng-class添加类"><a href="#Ng-class添加类" class="headerlink" title="Ng-class添加类"></a>Ng-class添加类</h3><ul>
+<li>Ng-class可执行js</li>
+<li>Ng-class=”{‘a’: ture,’b’: false}”</li>
+<li>Ng-class=”a?’active’:”</li>
+</ul>
+<h3 id="页面路由"><a href="#页面路由" class="headerlink" title="页面路由"></a>页面路由</h3><ul>
+<li>多页面应用加载单个页面</li>
+<li>依赖ngRoute.js和ngRoute模块</li>
+<li>引入相关资源和模块</li>
+<li>配置ngRouteProvider</li>
+<li>使用ng-view</li>
+</ul>
+<h3 id="service-获取数据"><a href="#service-获取数据" class="headerlink" title="service 获取数据"></a>service 获取数据</h3><ul>
+<li>写一个服务用与获取数据：使用$http请求资源</li>
+<li>使用服务</li>
+<li>编写模板</li>
+<li>$http({}).success().error();</li>
+<li>使用$digest或者$apply更新数据</li>
+</ul>
+<h4 id="Q-使用promise模式"><a href="#Q-使用promise模式" class="headerlink" title="$Q 使用promise模式"></a>$Q 使用promise模式</h4><ul>
+<li>$q.defer()</li>
+<li>$q.promise</li>
+<li>Defered.resolve(data);</li>
+<li>Defered.reject(data);</li>
+</ul>
+<h3 id="编写一个指令"><a href="#编写一个指令" class="headerlink" title="编写一个指令"></a>编写一个指令</h3><h4 id="restrict"><a href="#restrict" class="headerlink" title="restrict"></a>restrict</h4><ul>
+<li>限定指令的使用方式<br>– ‘A’-only matches attribute name<br>– ‘E’-only matches element name<br>– ‘C’-only matches class name</li>
+<li>如 EA E EC EAC</li>
+</ul>
+<h4 id="SCOPE"><a href="#SCOPE" class="headerlink" title="SCOPE"></a>SCOPE</h4><ul>
+<li>隔离作用域<br>– $<br>– =<br>– @</li>
+</ul>
+<h4 id="link"><a href="#link" class="headerlink" title="link"></a>link</h4><ul>
+<li>编译阶段执行</li>
+<li>四个参数: scope element attrs tabsCtrl ; Require</li>
+</ul>
+<h4 id="translude"><a href="#translude" class="headerlink" title="translude"></a>translude</h4><ul>
+<li>Ng-translude</li>
+</ul>
+<h4 id="其他常用指令"><a href="#其他常用指令" class="headerlink" title="其他常用指令"></a>其他常用指令</h4><ul>
+<li>Ng-show ng-if ng-option ng-select等</li>
+</ul>
+<h4 id="组件间通讯"><a href="#组件间通讯" class="headerlink" title="组件间通讯"></a>组件间通讯</h4><ul>
+<li>$scope.$on</li>
+<li>$scope.$emit</li>
+<li>$scope.$broadcast</li>
+</ul>
+
       
     </div>
 
@@ -296,6 +430,12 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/angular/" rel="tag">#angular</a>
+          
+        </div>
       
 
       
@@ -335,7 +475,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/10/08/test/"
-           data-title="test" data-url="http://yoursite.com/2016/10/08/test/">
+           data-title="Angular学习笔记" data-url="http://yoursite.com/2016/10/08/test/">
       </div>
     
   </div>
@@ -390,7 +530,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -419,7 +559,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Angular-js"><span class="nav-number">1.</span> <span class="nav-text">Angular.js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AngularJS应用组成如下："><span class="nav-number">1.0.1.</span> <span class="nav-text">AngularJS应用组成如下：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC"><span class="nav-number">1.1.</span> <span class="nav-text">MVC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVVM"><span class="nav-number">1.2.</span> <span class="nav-text">MVVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Angularjs-特点"><span class="nav-number">1.2.1.</span> <span class="nav-text">Angularjs 特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#controller-方法"><span class="nav-number">1.2.2.</span> <span class="nav-text">controller 方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#页面的控制器"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">页面的控制器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scope"><span class="nav-number">1.2.3.</span> <span class="nav-text">scope</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ng-repeat"><span class="nav-number">1.2.4.</span> <span class="nav-text">Ng-repeat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ng-click"><span class="nav-number">1.2.5.</span> <span class="nav-text">Ng-click</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ng-class添加类"><span class="nav-number">1.2.6.</span> <span class="nav-text">Ng-class添加类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#页面路由"><span class="nav-number">1.2.7.</span> <span class="nav-text">页面路由</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#service-获取数据"><span class="nav-number">1.2.8.</span> <span class="nav-text">service 获取数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Q-使用promise模式"><span class="nav-number">1.2.8.1.</span> <span class="nav-text">$Q 使用promise模式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编写一个指令"><span class="nav-number">1.2.9.</span> <span class="nav-text">编写一个指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#restrict"><span class="nav-number">1.2.9.1.</span> <span class="nav-text">restrict</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SCOPE"><span class="nav-number">1.2.9.2.</span> <span class="nav-text">SCOPE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#link"><span class="nav-number">1.2.9.3.</span> <span class="nav-text">link</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#translude"><span class="nav-number">1.2.9.4.</span> <span class="nav-text">translude</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他常用指令"><span class="nav-number">1.2.9.5.</span> <span class="nav-text">其他常用指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组件间通讯"><span class="nav-number">1.2.9.6.</span> <span class="nav-text">组件间通讯</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
