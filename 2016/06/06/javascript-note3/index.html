@@ -106,7 +106,7 @@ HTML事件
 键盘事件：keydown、keypress、keyup
 HTML事件
 其他事件：xmlhttprequest关于事件绑定1、直接和某个htm">
-<meta property="og:updated_time" content="2016-10-05T12:32:54.599Z">
+<meta property="og:updated_time" content="2016-10-23T02:38:31.545Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript 学习笔记（三）">
 <meta name="twitter:description" content="第三阶段js事件驱动机制
@@ -314,7 +314,7 @@ HTML事件
 </li>
 </ul>
 <a id="more"></a>
-<p>3、detachEvent与attachEvent，如果我们有一个投票系统，但是只能投一次票，解除绑定机制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;script language=&quot;javascript&quot;&gt;</div><div class="line">    document.getElementById(&quot;but1&quot;).attachEvent(&quot;onclick&quot;,test);</div><div class="line">    function test()&#123;</div><div class="line">    window.alert(&apos;you have one vote&apos;);</div><div class="line">    document.getElementById(&quot;but1&quot;).detachEvent(&quot;onclick&quot;,test);</div><div class="line">    &#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;ibnput type=&quot;button&quot; id=&quot;but1&quot; value=&quot;vote&quot;/&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure></p>
+<p>3、detachEvent与attachEvent，如果我们有一个投票系统，但是只能投一次票，解除绑定机制，非ie浏览器用的addEventListener/RemoveEventListener<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;script language=&quot;javascript&quot;&gt;</div><div class="line">    document.getElementById(&quot;but1&quot;).attachEvent(&quot;onclick&quot;,test);</div><div class="line">    function test()&#123;</div><div class="line">    window.alert(&apos;you have one vote&apos;);</div><div class="line">    document.getElementById(&quot;but1&quot;).detachEvent(&quot;onclick&quot;,test);</div><div class="line">    &#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;ibnput type=&quot;button&quot; id=&quot;but1&quot; value=&quot;vote&quot;/&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure></p>
 <h2 id="DOM编程"><a href="#DOM编程" class="headerlink" title="DOM编程"></a>DOM编程</h2><p>1、dom编程，写出各种网页游戏<br>2、dom编程也是ajax的重要基础<br>3、将html文档看成一颗dom树<br>4、dom html 对象只 通过方法对元素进行动态的控制</p>
 <h2 id="Bom"><a href="#Bom" class="headerlink" title="Bom"></a>Bom</h2><ul>
 <li>bom(browser object model),浏览器对象模型</li>
@@ -389,6 +389,30 @@ HTML事件
 <li>body.clientHeight</li>
 <li>offsetWidth</li>
 <li>offsetHeight</li>
+</ul>
+<h3 id="style对象"><a href="#style对象" class="headerlink" title="style对象"></a>style对象</h3><ul>
+<li>文本域换行textare  \r\n</li>
+</ul>
+<h3 id="forms-对象"><a href="#forms-对象" class="headerlink" title="forms 对象"></a>forms 对象</h3><ul>
+<li>document.forms</li>
+<li>length:返回大小</li>
+<li>item(index):指定取出forms对象集合的第几个form对象</li>
+<li>document.forms[i].value</li>
+<li>document.forms.item[i].value</li>
+<li>表单验证1、<form action="" onsubmit="函数">;2、<input type="submit" onclick="函数"></form></li>
+</ul>
+<h3 id="img-对象"><a href="#img-对象" class="headerlink" title="img 对象"></a>img 对象</h3><ul>
+<li>onload()</li>
+<li>onerror()</li>
+</ul>
+<h3 id="table-对象"><a href="#table-对象" class="headerlink" title="table 对象"></a>table 对象</h3><ul>
+<li>rows 行</li>
+<li>cells 列</li>
+<li>deletRow() 删除一行</li>
+<li><p>insertRow() insertCell() 插入行再在行中插入列</p>
+</li>
+<li><p>遍历一个table</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">for(var i=0;i&lt;mytab.rows.length;i++)&#123;</div><div class="line">//取出一行</div><div class="line">    var eachRow=mytab.rows[i];</div><div class="line">//对该行遍历</div><div class="line">for(var j=0;j&lt;eachRow.cells.length;j++)&#123;</div><div class="line">    window.alert(eachRow.cells[j].innerText);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
 </ul>
 
       
@@ -541,7 +565,7 @@ HTML事件
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第三阶段"><span class="nav-number">1.</span> <span class="nav-text">第三阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#js事件驱动机制"><span class="nav-number">1.1.</span> <span class="nav-text">js事件驱动机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件的分类"><span class="nav-number">1.1.1.</span> <span class="nav-text">事件的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关于事件绑定"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">关于事件绑定</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM编程"><span class="nav-number">1.2.</span> <span class="nav-text">DOM编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bom"><span class="nav-number">1.3.</span> <span class="nav-text">Bom</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#window对象"><span class="nav-number">1.3.1.</span> <span class="nav-text">window对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Screen-对象"><span class="nav-number">1.3.2.</span> <span class="nav-text">Screen 对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#history对象"><span class="nav-number">1.3.3.</span> <span class="nav-text">history对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Location-对象"><span class="nav-number">1.3.4.</span> <span class="nav-text">Location 对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Navigator对象"><span class="nav-number">1.3.5.</span> <span class="nav-text">Navigator对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Document-对象"><span class="nav-number">1.4.</span> <span class="nav-text">Document 对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何动态的创建添加删除html元素"><span class="nav-number">1.4.1.</span> <span class="nav-text">如何动态的创建添加删除html元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#body对象"><span class="nav-number">1.4.2.</span> <span class="nav-text">body对象</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第三阶段"><span class="nav-number">1.</span> <span class="nav-text">第三阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#js事件驱动机制"><span class="nav-number">1.1.</span> <span class="nav-text">js事件驱动机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件的分类"><span class="nav-number">1.1.1.</span> <span class="nav-text">事件的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关于事件绑定"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">关于事件绑定</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM编程"><span class="nav-number">1.2.</span> <span class="nav-text">DOM编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bom"><span class="nav-number">1.3.</span> <span class="nav-text">Bom</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#window对象"><span class="nav-number">1.3.1.</span> <span class="nav-text">window对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Screen-对象"><span class="nav-number">1.3.2.</span> <span class="nav-text">Screen 对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#history对象"><span class="nav-number">1.3.3.</span> <span class="nav-text">history对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Location-对象"><span class="nav-number">1.3.4.</span> <span class="nav-text">Location 对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Navigator对象"><span class="nav-number">1.3.5.</span> <span class="nav-text">Navigator对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Document-对象"><span class="nav-number">1.4.</span> <span class="nav-text">Document 对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何动态的创建添加删除html元素"><span class="nav-number">1.4.1.</span> <span class="nav-text">如何动态的创建添加删除html元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#body对象"><span class="nav-number">1.4.2.</span> <span class="nav-text">body对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#style对象"><span class="nav-number">1.4.3.</span> <span class="nav-text">style对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#forms-对象"><span class="nav-number">1.4.4.</span> <span class="nav-text">forms 对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#img-对象"><span class="nav-number">1.4.5.</span> <span class="nav-text">img 对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#table-对象"><span class="nav-number">1.4.6.</span> <span class="nav-text">table 对象</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
