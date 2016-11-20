@@ -1,0 +1,616 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="前言JS 中最基础的异步调用方式是 callback，它将回调函数 callback 传给异步 API，由浏览器或 Node 在异步完成后，通知 JS 引擎调用 callback。对于简单的异步操作，用 callback 实现，是够用的。但随着复杂交互页面和 Node 出现，callback 方案的弊端开始浮现出来。 Promise 规范孕育而生，并被纳入 ES6 的规范中。后来 ES7 又在 P">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript 异步进化史">
+<meta property="og:url" content="http://yoursite.com/2016/11/20/javascript-异步进化史/index.html">
+<meta property="og:site_name" content="Jelly's Blog">
+<meta property="og:description" content="前言JS 中最基础的异步调用方式是 callback，它将回调函数 callback 传给异步 API，由浏览器或 Node 在异步完成后，通知 JS 引擎调用 callback。对于简单的异步操作，用 callback 实现，是够用的。但随着复杂交互页面和 Node 出现，callback 方案的弊端开始浮现出来。 Promise 规范孕育而生，并被纳入 ES6 的规范中。后来 ES7 又在 P">
+<meta property="og:updated_time" content="2016-11-20T12:06:37.030Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript 异步进化史">
+<meta name="twitter:description" content="前言JS 中最基础的异步调用方式是 callback，它将回调函数 callback 传给异步 API，由浏览器或 Node 在异步完成后，通知 JS 引擎调用 callback。对于简单的异步操作，用 callback 实现，是够用的。但随着复杂交互页面和 Node 出现，callback 方案的弊端开始浮现出来。 Promise 规范孕育而生，并被纳入 ES6 的规范中。后来 ES7 又在 P">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> javascript 异步进化史 | Jelly's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jelly's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                javascript 异步进化史
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-20T20:02:05+08:00" content="2016-11-20">
+              2016-11-20
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/20/javascript-异步进化史/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/20/javascript-异步进化史/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>JS 中最基础的异步调用方式是 callback，它将回调函数 callback 传给异步 API，由浏览器或 Node 在异步完成后，通知 JS 引擎调用 callback。对于简单的异步操作，用 callback 实现，是够用的。但随着复杂交互页面和 Node 出现，callback 方案的弊端开始浮现出来。 Promise 规范孕育而生，并被纳入 ES6 的规范中。后来 ES7 又在 Promise 的基础上将 async 函数纳入标准。此为 JavaScript 异步进化史。</p>
+<a id="more"></a>
+<h2 id="同步与异步"><a href="#同步与异步" class="headerlink" title="同步与异步"></a>同步与异步</h2><p>通常，代码是由上往下依次执行的。如果有多个任务，就必需排队，前一个任务完成，后一个任务才会执行。这种执行模式称之为：同步（synchronous）。新手容易把计算机用语中的同步，和日常用语中的同步弄混淆。如，“把文件同步到云端”中的同步，指的是“使…保持一致”。而在计算机中，同步指的是任务从上往下依次执行的模式。比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">A();</div><div class="line">B();</div><div class="line">C();</div></pre></td></tr></table></figure></p>
+<p>在这段代码中，A、B、C是三个不同的函数，每个函数都是一个不相关的任务。在同步模式，计算机会先执行 A 任务，再执行 B 任务，最后执行 C 任务。在大部分情况，同步模式都没问题。但是如果 B 任务是一个耗时很长的网络请求，而 C 任务恰好是展现新页面，就会导致网页卡顿。</p>
+<p>更好解决方案是，将 B 任务分成两个部分。一部分立即执行网络请求的任务，另一部分在请求回来后的执行任务。这种一部分立即执行，另一部分在未来执行的模式称为异步。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">A();</div><div class="line">// 在现在发送请求 </div><div class="line">ajax(&apos;url1&apos;,function B() &#123;</div><div class="line">  // 在未来某个时刻执行</div><div class="line">&#125;)</div><div class="line">C();</div><div class="line">// 执行顺序 A =&gt; C =&gt; B</div></pre></td></tr></table></figure></p>
+<p>实际上，JS 引擎并没有直接处理网络请求的任务，它只是调用了浏览器的网络请求接口，由浏览器发送网络请求并监听返回的数据。JavaScript 异步能力的本质是浏览器或 Node 的多线程能力。</p>
+<h2 id="callback"><a href="#callback" class="headerlink" title="callback"></a>callback</h2><p>未来执行的函数通常也叫 callback。使用 callback 的异步模式，解决了阻塞的问题，但是也带来了一些其他问题。在最开始，我们的函数是从上往下书写的，也是从上往下执行的，这种“线性”模式，非常符合我们的思维习惯，但是现在却被 callback 打断了！在上面一段代码中，现在它跳过 B 任务先执行了 C任务！这种异步“非线性”的代码会比同步“线性”的代码，更难阅读，因此也更容易滋生 BUG。</p>
+<p>试着判断下面这段代码的执行顺序，你会对“非线性”代码比“线性”代码更难以阅读，体会更深。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">A();</div><div class="line"></div><div class="line">ajax(&apos;url1&apos;, function()&#123;</div><div class="line">    B();</div><div class="line"></div><div class="line">    ajax(&apos;url2&apos;, function()&#123;</div><div class="line">        C();</div><div class="line">    &#125;</div><div class="line">    D();</div><div class="line">    </div><div class="line">&#125;);</div><div class="line">E();</div><div class="line">// A =&gt; E =&gt; B =&gt; D =&gt; C</div></pre></td></tr></table></figure></p>
+<p>这段代码中，从上往下执行的顺序被 Callback 打乱了。我们的阅读代码视线是<code>A =&gt; B =&gt; C =&gt; D =&gt; E</code>，但是执行顺序却是<code>A =&gt; E =&gt; B =&gt; D =&gt; C</code>，这就是非线性代码带来的糟糕之处。</p>
+<p>通过将ajax后面执行的任务提前，可以更容易看懂代码的执行顺序。虽然代码因为嵌套看起来不美观，但现在的执行顺序却是从上到下的“线性”方式。这种技巧在写多重嵌套的代码时，是非常有用的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">A();</div><div class="line">E();</div><div class="line"></div><div class="line">ajax(&apos;url1&apos;, function()&#123;</div><div class="line">    B();</div><div class="line">    D();</div><div class="line"></div><div class="line">    ajax(&apos;url2&apos;, function()&#123;</div><div class="line">        C();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;);</div><div class="line">// A =&gt; E =&gt; B =&gt; D =&gt; C</div></pre></td></tr></table></figure></p>
+<p>上一段代码只有处理了成功回调，并没处理异常回调。接下来，把异常处理回调加上，再来讨论代码“线性”执行的问题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">A();</div><div class="line"></div><div class="line">ajax(&apos;url1&apos;, function()&#123;</div><div class="line">    B();</div><div class="line"></div><div class="line">    ajax(&apos;url2&apos;, function()&#123;</div><div class="line">        C();</div><div class="line">    &#125;,function()&#123;</div><div class="line">        D();</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">&#125;,function()&#123;</div><div class="line">    E();</div><div class="line">    </div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>加上异常处理回调后，url1的成功回调函数<code>B</code> 和异常回调函数<code>E</code>，被分开了。这种“非线性”的情况又出现了。</p>
+<p>在 node 中，为了解决的异常回调导致的“非线性”的问题，制定了错误优先的策略。node 中 callback 的第一个参数，专门用于判断是否发生异常。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">A();</div><div class="line"></div><div class="line">get(&apos;url1&apos;, function(error)&#123;</div><div class="line">    if(error)&#123;</div><div class="line">        E();</div><div class="line">    &#125;else &#123;</div><div class="line">        B();</div><div class="line"></div><div class="line">        get(&apos;url2&apos;, function(error)&#123;</div><div class="line">            if(error)&#123;</div><div class="line">                D();</div><div class="line">            &#125;else&#123;</div><div class="line">                C();</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>到此，callback 引起的“非线性”问题基本得到解决。遗憾的是，使用 callback 嵌套，一层层if else和回调函数，一旦嵌套层数多起来，阅读起来不是很方便。此外，callback 一旦出现异常，只能在当前回调函数内部处理异常。</p>
+<h2 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h2><p>在 JavaScript 的异步进化史中，涌现出一系列解决 callback 弊端的库，而 Promise 成为了最终的胜者，并成功地被引入了 ES6 中。它将提供了一个更好的“线性”书写方式，并解决了异步异常只能在当前回调中被捕获的问题。</p>
+<p>Promise 就像一个中介，它承诺会将一个可信任的异步结果返回。首先 Promise 和异步接口签订一个协议，成功时，调用resolve函数通知 Promise，异常时，调用reject通知 Promise。另一方面 Promise 和 callback 也签订一个协议，由 Promise 在将来返回可信任的值给then和catch中注册的 callback。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 创建一个 Promise 实例（异步接口和 Promise 签订协议）</div><div class="line">var promise = new Promise(function (resolve,reject) &#123;</div><div class="line">  ajax(&apos;url&apos;,resolve,reject);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 调用实例的 then catch 方法 （成功回调、异常回调与 Promise 签订协议）</div><div class="line">promise.then(function(value) &#123;</div><div class="line">  // success</div><div class="line">&#125;).catch(function (error) &#123;</div><div class="line">  // error</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>Promise 是个非常不错的中介，它只返回可信的信息给 callback。它对第三方异步库的结果进行了一些加工，保证了 callback 一定会被异步调用，且只会被调用一次。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var promise1 = new Promise(function (resolve) &#123;</div><div class="line">  // 可能由于某些原因导致同步调用</div><div class="line">  resolve(&apos;B&apos;);</div><div class="line">&#125;);</div><div class="line">// promise依旧会异步执行</div><div class="line">promise1.then(function(value)&#123;</div><div class="line">    console.log(value)</div><div class="line">&#125;);</div><div class="line">console.log(&apos;A&apos;);</div><div class="line">// A B （先 A 后 B）</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">var promise2 = new Promise(function (resolve) &#123;</div><div class="line">  // 成功回调被通知了2次</div><div class="line">  setTimeout(function()&#123;</div><div class="line">    resolve();</div><div class="line">  &#125;,0)</div><div class="line">&#125;);</div><div class="line">// promise只会调用一次</div><div class="line">promise2.then(function()&#123;</div><div class="line">    console.log(&apos;A&apos;)</div><div class="line">&#125;);</div><div class="line">// A (只有一个)</div><div class="line"></div><div class="line">var promise3 = new Promise(function (resolve,reject) &#123;</div><div class="line">  // 成功回调先被通知，又通知了失败回调</div><div class="line">  setTimeout(function()&#123;</div><div class="line">    resolve();</div><div class="line">    reject();</div><div class="line">  &#125;,0)</div><div class="line"></div><div class="line">&#125;);</div><div class="line">// promise只会调用成功回调</div><div class="line">promise3.then(function()&#123;</div><div class="line">    console.log(&apos;A&apos;)</div><div class="line">&#125;).catch(function()&#123;</div><div class="line">    console.log(&apos;B&apos;)</div><div class="line">&#125;);</div><div class="line">// A（只有A）</div><div class="line">介绍完 Promise 的特性后，来看看它如何利用链式调用，解决异步代码可读性的问题的。</div><div class="line"></div><div class="line">var fetch = function(url)&#123;</div><div class="line">    // 返回一个新的 Promise 实例</div><div class="line">    return new Promise(function (resolve,reject) &#123;</div><div class="line">        ajax(url,resolve,reject);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">A();</div><div class="line">fetch(&apos;url1&apos;).then(function()&#123;</div><div class="line">    B();</div><div class="line">    // 返回一个新的 Promise 实例</div><div class="line">    return fetch(&apos;url2&apos;);</div><div class="line">&#125;).catch(function()&#123;</div><div class="line">    // 异常的时候也可以返回一个新的 Promise 实例</div><div class="line">    return fetch(&apos;url2&apos;);</div><div class="line">    // 使用链式写法调用这个新的 Promise 实例的 then 方法    </div><div class="line">&#125;).then(function() &#123;</div><div class="line">    C();</div><div class="line">    // 继续返回一个新的 Promise 实例...</div><div class="line">&#125;)</div><div class="line">// A B C ...</div></pre></td></tr></table></figure>
+<p>如此反复，不断返回一个 Promise 对象，再采用链式调用的方式不断地调用。使 Promise 摆脱了 callback 层层嵌套的问题和异步代码“非线性”执行的问题。</p>
+<p>Promise 解决的另外一个难点是 callback 只能捕获当前错误异常。Promise 和 callback 不同，每个 callback 只能知道自己的报错情况，但 Promise 代理着所有的 callback，所有 callback 的报错，都可以由 Promise 统一处理。所以，可以通过catch来捕获之前未捕获的异常。</p>
+<p>Promise 解决了 callback 的异步调用问题，但 Promise 并没有摆脱 callback，它只是将 callback 放到一个可以信任的中间机构，这个中间机构去链接我们的代码和异步接口。</p>
+<h2 id="异步（async）函数"><a href="#异步（async）函数" class="headerlink" title="异步（async）函数"></a>异步（async）函数</h2><p>异步（async）函数是 ES7 的一个新的特性，它结合了 Promise，让我们摆脱 callback 的束缚，直接用类同步的“线性”方式，写异步函数。</p>
+<p>声明异步函数，只需在普通函数前添加一个关键字 async 即可，如async function main(){} 。在异步函数中，可以使用await关键字，表示等待后面表达式的执行结果，一般后面的表达式是 Promise 实例。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">async function main&#123;</div><div class="line">    // timer 是在上一个例子中定义的</div><div class="line">    var value = await timer(100);</div><div class="line">    console.log(value); // done （100ms 后返回 done）</div><div class="line">&#125;</div><div class="line"></div><div class="line">main();</div></pre></td></tr></table></figure></p>
+<p>异步函数和普通函数一样调用 main() 。调用后，会立即执行异步函数中的第一行代码 var value = await timer(100) 。等到异步执行完成后，才会执行下一行代码。</p>
+<p>除此之外，异步函数和其他函数基本类似，它使用try…catch来捕捉异常。也可以传入参数。但不要在异步函数中使用return来返回值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">var  timer = new Promise(function create(resolve,reject) &#123;</div><div class="line">  if(typeof delay !== &apos;number&apos;)&#123;</div><div class="line">    reject(new Error(&apos;type error&apos;));</div><div class="line">  &#125;</div><div class="line">  setTimeout(resolve,delay,&apos;done&apos;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">async function main(delay)&#123;</div><div class="line">  try&#123;</div><div class="line">    var value1 = await timer(delay);</div><div class="line">    var value2 = await timer(&apos;&apos;);</div><div class="line">    var value3 = await timer(delay);</div><div class="line">  &#125;catch(err)&#123;</div><div class="line">    console.error(err);</div><div class="line">      // Error: type error</div><div class="line">      //   at create (&lt;anonymous&gt;:5:14)</div><div class="line">      //   at timer (&lt;anonymous&gt;:3:10)</div><div class="line">      //   at A (&lt;anonymous&gt;:12:10)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">main(0);</div></pre></td></tr></table></figure></p>
+<p>异步函数也可以被当作值，传入普通函数和异步函数中执行。但是在异步函数中，使用异步函数时要注意，如果不使用await，异步函数会被同步执行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">async function main(delay)&#123;</div><div class="line">    var value1 = await timer(delay);</div><div class="line">    console.log(&apos;A&apos;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">async function doAsync(main)&#123;</div><div class="line">  main(0);</div><div class="line">  console.log(&apos;B&apos;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">doAsync(main);</div><div class="line">// B A</div></pre></td></tr></table></figure></p>
+<p>这个时候打印出来的值是 B A。说明 doAsync 函数并没有等待 main 的异步执行完毕就执行了 console。如果要让 console 在 main 的异步执行完毕后才执行，我们需要在main前添加关键字await。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">async function main(delay)&#123;</div><div class="line">    var value1 = await timer(delay);</div><div class="line">    console.log(&apos;A&apos;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">async function doAsync(main)&#123;</div><div class="line">    await main(0);</div><div class="line">    console.log(&apos;B&apos;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">doAsync(main);</div><div class="line">// A B</div></pre></td></tr></table></figure></p>
+<p>由于异步函数采用类同步的书写方法，所以在处理多个并发请求，新手可能会像下面一样书写。这样会导致url2的请求必需等到url1的请求回来后才会发送。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">var fetch = function (url) &#123;</div><div class="line">  return new Promise(function (resolve,reject) &#123;</div><div class="line">    ajax(url,resolve,reject);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">async function main()&#123;</div><div class="line">  try&#123;</div><div class="line">    var value1 = await fetch(&apos;url1&apos;);</div><div class="line">    var value2 = await fetch(&apos;url2&apos;);</div><div class="line">    conosle.log(value1,value2);</div><div class="line">  &#125;catch(err)&#123;</div><div class="line">    console.error(err)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">main();</div></pre></td></tr></table></figure></p>
+<p>使用Promise.all的方法来解决这个问题。Promise.all用于将多个Promise实例，包装成一个新的 Promis e实例，当所有的 Promise 成功后才会触发Promise.all的resolve函数，当有一个失败，则立即调用Promise.all的reject函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var fetch = function (url) &#123;</div><div class="line">  return new Promise(function (resolve,reject) &#123;</div><div class="line">    ajax(url,resolve,reject);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">async function main()&#123;</div><div class="line">  try&#123;</div><div class="line">    var arrValue = await Promise.all[fetch(&apos;url1&apos;),fetch(&apos;url2&apos;)];</div><div class="line">    conosle.log(arrValue[0],arrValue[1]);</div><div class="line">  &#125;catch(err)&#123;</div><div class="line">    console.error(err)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">main();</div></pre></td></tr></table></figure></p>
+<p>目前使用 Babel 已经支持 ES7 异步函数的转码了，大家可以在自己的项目中开始尝试。</p>
+<ul>
+<li>via:<a href="https://segmentfault.com/a/1190000006138882" target="_blank" rel="external">https://segmentfault.com/a/1190000006138882</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/16/Typescript/" rel="next" title="Typescript的一些特性">
+                <i class="fa fa-chevron-left"></i> Typescript的一些特性
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/20/javascript-异步进化史/"
+           data-title="javascript 异步进化史" data-url="http://yoursite.com/2016/11/20/javascript-异步进化史/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Jelly Deng" />
+          <p class="site-author-name" itemprop="name">Jelly Deng</p>
+          <p class="site-description motion-element" itemprop="description">人生得意须尽欢</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步与异步"><span class="nav-number">2.</span> <span class="nav-text">同步与异步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#callback"><span class="nav-number">3.</span> <span class="nav-text">callback</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#promise"><span class="nav-number">4.</span> <span class="nav-text">promise</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步（async）函数"><span class="nav-number">5.</span> <span class="nav-text">异步（async）函数</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jelly Deng</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a> 
+</div>
+
+<div class="theme-info">
+  theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jellydeng"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
