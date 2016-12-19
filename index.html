@@ -233,6 +233,110 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/19/ng2：-RouterLink-导航/" itemprop="url">
+                  ng2： RouterLink 导航
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-19T16:55:10+08:00" content="2016-12-19">
+              2016-12-19
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/19/ng2：-RouterLink-导航/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/19/ng2：-RouterLink-导航/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在使用路由模块之前，首先应该导入ng2的路由模块，从@angular/router中import。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;a routerLink=&apos;/dashboard/home&apos; routerLinkActive=&apos;active&apos;&gt;Home1&lt;/a&gt;</div><div class="line">&lt;a routerLink=&apos;/dashboard/home&apos; [routerLinkActive]=&quot;[&apos;active&apos;]&quot;&gt;Home2&lt;/a&gt;</div><div class="line">&lt;a routerLink=&quot;home&quot; routerLinkActive=&quot;active&quot;&gt;</div><div class="line">&lt;a routerLink=&apos;../home&apos; routerLinkActive=&quot;active&quot;&gt;Home 2.2 &lt;/a&gt;</div><div class="line">&lt;a [routerLink]=&quot;[&apos;/dashboard/home&apos;]&quot; [routerLinkActive]=&quot;[&apos;active&apos;]&quot;&gt;Home3&lt;/a&gt;</div><div class="line">&lt;a [routerLink]=&quot;[&apos;../home&apos;]&quot; [routerLinkActive]=&quot;[&apos;active&apos;]&quot;&gt;Home4&lt;/a&gt;</div><div class="line">&lt;a [routerLink]=&quot;[&apos;../home&apos;]&quot; [routerLinkActive]=&quot;[&apos;active&apos;]&quot;&gt;Home5&lt;/a&gt;</div><div class="line">&lt;a [routerLinkActive]=&quot;[&apos;active&apos;]&quot; (click)=&quot;onSelect()&quot;&gt;Home6&lt;/a&gt;</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/19/ng2：-RouterLink-导航/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/12/angular2常用指令总结/" itemprop="url">
                   angular2常用指令总结
                 </a>
@@ -1233,119 +1337,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/01/Jquery-note/" itemprop="url">
-                  Jquery note (一）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-01T11:37:38+08:00" content="2016-06-01">
-              2016-06-01
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/01/Jquery-note/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/01/Jquery-note/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="document-ready"><a href="#document-ready" class="headerlink" title="$(document).ready"></a>$(document).ready</h3><p>$(document).ready 的意思是等页面的文档（document）中的节点都加载完毕后，在执行后续的代码，因为我们在执行代码的时候，可能会依赖页面的某一个元素，我们要确保这个元素真正的的被加载完毕后才能正确的使用。</p>
-<h3 id="如何把jQuery对象转成DOM对象？"><a href="#如何把jQuery对象转成DOM对象？" class="headerlink" title="如何把jQuery对象转成DOM对象？"></a>如何把jQuery对象转成DOM对象？</h3><p>利用数组下标的方式读取到jQuery中的DOM对象</p>
-<p>HTML代码</p>
-<pre><code>&lt;div&gt;元素一&lt;/div&gt;
-&lt;div&gt;元素二&lt;/div&gt;
-&lt;div&gt;元素三&lt;/div&gt;
-</code></pre><p>JavaScript代码</p>
-<pre><code>var $div = $(&apos;div&apos;) //jQuery对象
-var div = $div[0] //转化成DOM对象
-div.style.color = &apos;red&apos; //操作dom对象的属性
-</code></pre><p>用jQuery找到所有的div元素（3个），因为jQuery 对象也是一个数组结构，可以通过数组下标索引找到第一个div元素，通过返回的div对象然后调用它style属性然修改第一个div元素的颜色。这里需要注意的一点是，数组的索引是从0开始的，也就是第一个元素下标是0</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/01/Jquery-note/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1391,7 +1382,7 @@ div.style.color = &apos;red&apos; //操作dom对象的属性
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1401,7 +1392,7 @@ div.style.color = &apos;red&apos; //操作dom对象的属性
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
